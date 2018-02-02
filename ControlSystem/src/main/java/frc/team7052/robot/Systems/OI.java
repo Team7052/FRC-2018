@@ -1,5 +1,6 @@
 package frc.team7052.robot.Systems;
 
+import edu.wpi.first.wpilibj.GenericHID;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
 import frc.team7052.robot.Constants;
@@ -19,6 +20,7 @@ public class OI {
      * mode = TODO
      * select = TODO
      * */
+
     public static int defaultPort = 0;
 
     public Joystick joystick;

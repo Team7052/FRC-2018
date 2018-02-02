@@ -6,11 +6,15 @@ import edu.wpi.first.wpilibj.SpeedControllerGroup;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 import frc.team7052.robot.Constants;
+import frc.team7052.robot.Structs.Vector3D;
 
 public class DriveTrain extends Subsystem {
-    public DifferentialDrive drive;
+    public static DifferentialDrive drive;
     private SpeedControllerGroup leftGroup;
     private SpeedControllerGroup rightGroup;
+
+    public static boolean drivingCarefully = false;
+    public static double prevZValue = 0.0;
 
     private DriveTrain() {
         leftGroup = new SpeedControllerGroup(new Spark(Constants.kFrontLeftMotor), new Spark(Constants.kBackLeftMotor));
@@ -31,8 +35,27 @@ public class DriveTrain extends Subsystem {
         return instance;
     }
 
-    public void driveArcade(double speed, double rotation) {
-        drive.arcadeDrive(speed, rotation);
+    public static void arcadeDrive(OI oi) {
+        Vector3D leftStick = oi.getLeftStick();
+        //if prevZValue was just released, then toggle driving carefully
+        if (leftStick.z == 0 && prevZValue != 0) drivingCarefully = !drivingCarefully;
+        prevZValue = leftStick.z;
+
+        //set speed of the motor
+        double speed = oi.getRightBumper();
+        if (oi.getLeftBumper() > 0) speed = -oi.getLeftBumper();
+        //arcade drive
+        //choose multiplier based on if they are currently driving slowly
+        double speedMultiplier = drivingCarefully ? Constants.kSpeedSlowMultiplier : Constants.kSpeedFastMultiplier;
+        double rotationMultiplier = drivingCarefully ? Constants.kRotationSlowMultiplier : Constants.kRotationFastMultiplier;
+        drive.arcadeDrive(speed * speedMultiplier,leftStick.x * rotationMultiplier);
+    }
+    public static void tankDrive(OI oi) {
+
+    }
+
+    public void stop() {
+        drive.stopMotor();
     }
 }
 

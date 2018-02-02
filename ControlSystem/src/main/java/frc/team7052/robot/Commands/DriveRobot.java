@@ -24,19 +24,7 @@ public class DriveRobot extends Command {
 
     @Override
     protected void execute() {
-        Vector3D leftStick = oi.getLeftStick();
-        //if prevZValue was just released, then toggle driving carefully
-        if (leftStick.z == 0 && prevZValue != 0) drivingCarefully = !drivingCarefully;
-        prevZValue = leftStick.z;
-
-        //set speed of the motor
-        double speed = oi.getRightBumper();
-        if (oi.getLeftBumper() > 0) speed = -oi.getLeftBumper();
-        //arcade drive
-        //choose multiplier based on if they are currently driving slowly
-        double speedMultiplier = drivingCarefully ? Constants.kSpeedSlowMultiplier : Constants.kSpeedFastMultiplier;
-        double rotationMultiplier = drivingCarefully ? Constants.kRotationSlowMultiplier : Constants.kRotationFastMultiplier;
-        driveTrain.driveArcade(speed * speedMultiplier,leftStick.x * rotationMultiplier);
+        driveTrain.arcadeDrive(oi);
     }
 
     @Override
@@ -52,6 +40,6 @@ public class DriveRobot extends Command {
     @Override
     protected void end() {
         //stop driveTrain
-        driveTrain.driveArcade(0,0);
+        driveTrain.stop();
     }
 }
