@@ -1,13 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="cb3dfbe2-91f6-4005-9c82-8b49d7aaea3a" name="Default" comment="Working Robot With 2 Speed Modes">
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/java/frc/team7052/robot/Commands/DriveRobot.java" />
+    <list default="true" id="cb3dfbe2-91f6-4005-9c82-8b49d7aaea3a" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/ControlSystem.iws" afterPath="$PROJECT_DIR$/ControlSystem.iws" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/frc/team7052/robot/CommandBase.java" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/frc/team7052/robot/Constants.java" afterPath="$PROJECT_DIR$/src/main/java/frc/team7052/robot/Constants.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/frc/team7052/robot/Robot.java" afterPath="$PROJECT_DIR$/src/main/java/frc/team7052/robot/Robot.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/frc/team7052/robot/Systems/OI.java" afterPath="$PROJECT_DIR$/src/main/java/frc/team7052/robot/Systems/OI.java" />
     </list>
     <ignored path="$PROJECT_DIR$/.gradle/" />
     <ignored path="$PROJECT_DIR$/build/" />
@@ -878,10 +873,19 @@
       <option name="presentableId" value="Default" />
       <updated>1517525298031</updated>
     </task>
+    <task id="LOCAL-00001" summary="Working Robot With 2 Speed Modes">
+      <created>1517548909720</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1517548909720</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="22" width="1280" height="778" extended-state="6" />
+    <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
