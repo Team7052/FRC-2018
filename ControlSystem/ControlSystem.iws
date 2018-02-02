@@ -1,16 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="cb3dfbe2-91f6-4005-9c82-8b49d7aaea3a" name="Default" comment="">
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/java/frc/team7052/robot/CommandBase.java" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/java/frc/team7052/robot/Constants.java" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/java/frc/team7052/robot/Structs/Vector3D.java" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/java/frc/team7052/robot/Systems/OI.java" />
-      <change beforePath="$PROJECT_DIR$/ControlSystem.ipr" afterPath="$PROJECT_DIR$/ControlSystem.ipr" />
-      <change beforePath="$PROJECT_DIR$/ControlSystem.iws" afterPath="$PROJECT_DIR$/ControlSystem.iws" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/frc/team7052/robot/DriveTrain.java" afterPath="$PROJECT_DIR$/src/main/java/frc/team7052/robot/Systems/DriveTrain.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/frc/team7052/robot/Robot.java" afterPath="$PROJECT_DIR$/src/main/java/frc/team7052/robot/Robot.java" />
-    </list>
+    <list default="true" id="cb3dfbe2-91f6-4005-9c82-8b49d7aaea3a" name="Default" comment="" />
     <ignored path="$PROJECT_DIR$/.gradle/" />
     <ignored path="$PROJECT_DIR$/build/" />
     <ignored path="$PROJECT_DIR$/out/" />
