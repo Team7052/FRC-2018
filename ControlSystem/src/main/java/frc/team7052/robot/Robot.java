@@ -4,16 +4,18 @@ import edu.wpi.cscore.CvSink;
 import edu.wpi.cscore.CvSource;
 import edu.wpi.cscore.UsbCamera;
 import edu.wpi.first.wpilibj.*;
+import edu.wpi.first.wpilibj.command.Scheduler;
+import frc.team7052.robot.Commands.DriveRobot;
 import frc.team7052.robot.Systems.OI;
 import org.opencv.core.Mat;
 
 public class Robot extends IterativeRobot {
-    CommandBase commandBase;
+    DriveRobot driveCommand;
     OI oi;
     @Override
     public void robotInit() {
-        commandBase.init();
         oi = new OI();
+        driveCommand = new DriveRobot(oi);
 
         //TODO: Create Vision System
         new Thread(() -> {
@@ -53,12 +55,7 @@ public class Robot extends IterativeRobot {
 
     @Override
     public void teleopPeriodic() {
-        /*double speed = 0;
-        if (stick.getThrottle() > 0) {
-            speed = -stick.getThrottle();
-        }
-        else if (stick.getTwist() > 0) speed = stick.getTwist();
-        drive.arcadeDrive(speed, stick.getX() * 0.67);*/
+        Scheduler.getInstance().add(driveCommand);
     }
 
     @Override

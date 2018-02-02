@@ -1,6 +1,8 @@
 package frc.team7052.robot.Systems;
 
 import edu.wpi.first.wpilibj.Joystick;
+import edu.wpi.first.wpilibj.buttons.JoystickButton;
+import frc.team7052.robot.Constants;
 import frc.team7052.robot.Structs.Vector3D;
 
 
@@ -20,6 +22,7 @@ public class OI {
     public static int defaultPort = 0;
 
     public Joystick joystick;
+
     public OI() {
         joystick = new Joystick(defaultPort);
     }
