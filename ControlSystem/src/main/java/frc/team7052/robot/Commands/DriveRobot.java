@@ -24,7 +24,7 @@ public class DriveRobot extends Command {
 
     @Override
     protected void execute() {
-        driveTrain.arcadeDrive(oi);
+        driveTrain.tankDrive(oi);
     }
 
     @Override

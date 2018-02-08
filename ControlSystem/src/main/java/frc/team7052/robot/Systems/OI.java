@@ -30,7 +30,13 @@ public class OI {
     }
 
     public Vector3D getLeftStick() {
-        if (joystick != null) new Vector3D(joystick.getX(), joystick.getY(), joystick.getZ());
+        if (joystick != null) return new Vector3D(joystick.getX(), joystick.getY(), joystick.getZ());
+        return new Vector3D(0,0,0);
+    }
+    public Vector3D getRightStick() {
+        double xAxis = joystick.getRawAxis(4);
+        double yAxis = joystick.getRawAxis(5);
+        if (joystick != null) return new Vector3D(xAxis,yAxis,0);
         return new Vector3D(0,0,0);
     }
     public double getRightBumper() {

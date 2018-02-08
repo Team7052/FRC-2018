@@ -18,7 +18,7 @@ public class Robot extends IterativeRobot {
         driveCommand = new DriveRobot(oi);
 
         //TODO: Create Vision System
-        new Thread(() -> {
+        /*new Thread(() -> {
             UsbCamera camera = CameraServer.getInstance().startAutomaticCapture();
             camera.setResolution(320, 240);
 
@@ -32,7 +32,7 @@ public class Robot extends IterativeRobot {
                 cvSink.grabFrame(source);
                 outputStream.putFrame(output);
             }
-        }).start();
+        }).start();*/
     }
 
     @Override
@@ -45,7 +45,7 @@ public class Robot extends IterativeRobot {
 
     @Override
     public void teleopInit() {
-
+        Scheduler.getInstance().add(driveCommand);
     }
 
     @Override
@@ -55,7 +55,7 @@ public class Robot extends IterativeRobot {
 
     @Override
     public void teleopPeriodic() {
-        Scheduler.getInstance().add(driveCommand);
+        Scheduler.getInstance().run();
     }
 
     @Override

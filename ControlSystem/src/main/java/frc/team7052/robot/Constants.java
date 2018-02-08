@@ -6,14 +6,14 @@ public class Constants {
     public static double kRotationFastMultiplier = 0.67;
 
     public static double kSpeedSlowMultiplier = 0.6;
-    public static double kRotationSlowMultiplier = 0.5;
+    public static double kRotationSlowMultiplier = 0.56;
 
     //wiring constants directly related to hardware: Don't change unless rewiring the robot
     //drive
-    public static int kFrontLeftMotor = 0;
-    public static int kBackLeftMotor = 1;
-    public static int kFrontRightMotor = 2;
-    public static int kBackRightMotor = 3;
+    public static int kFrontLeftMotor = 3;
+    public static int kBackLeftMotor = 2;
+    public static int kFrontRightMotor = 0;
+    public static int kBackRightMotor = 1;
 
     public static int kButtonMode = 0;
     public static int kButtonA = 1;
