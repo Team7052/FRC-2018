@@ -1,17 +1,16 @@
 package frc.team7052.robot.Commands;
 
 import edu.wpi.first.wpilibj.command.Command;
-import frc.team7052.robot.Constants;
-import frc.team7052.robot.Structs.Vector3D;
 import frc.team7052.robot.Systems.DriveTrain;
 import frc.team7052.robot.Systems.OI;
+import frc.team7052.robot.Constants;
 
 public class DriveRobot extends Command {
     OI oi;
     DriveTrain driveTrain;
-    boolean drivingCarefully = false;
-    double prevZValue = 0;
 
+    double prevZValue = 0;
+    DrivingState drivingState = DrivingState.regular;
     public DriveRobot(OI oi) {
         this.oi = oi;
         driveTrain = DriveTrain.getInstance();
@@ -24,7 +23,14 @@ public class DriveRobot extends Command {
 
     @Override
     protected void execute() {
-        driveTrain.tankDrive(oi);
+        if (oi.buttonPressed(Constants.kButtonLeftJoystickPress)) {
+            drivingState = DrivingState.turbo;
+        }
+        else {
+            drivingState = DrivingState.regular;
+        }
+        driveTrain.tankDrive(oi, drivingState);
+
     }
 
     @Override

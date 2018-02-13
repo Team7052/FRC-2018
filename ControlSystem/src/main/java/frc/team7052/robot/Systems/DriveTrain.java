@@ -7,6 +7,7 @@ import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 import frc.team7052.robot.Constants;
 import frc.team7052.robot.Structs.Vector3D;
+import frc.team7052.robot.Commands.DrivingState;
 
 public class DriveTrain extends Subsystem {
     public static DifferentialDrive drive;
@@ -52,7 +53,7 @@ public class DriveTrain extends Subsystem {
         drive.arcadeDrive(speed * speedMultiplier,leftStick.x * rotationMultiplier);
     }
 
-    public static void tankDrive(OI oi) {
+    public static void tankDrive(OI oi, DrivingState drivingState) {
         Vector3D leftStick = oi.getLeftStick();
         Vector3D rightStick = oi.getRightStick();
         double speed = leftStick.y;
@@ -60,7 +61,6 @@ public class DriveTrain extends Subsystem {
         double rightSpeed = speed;
 
         double turnValue = rightStick.x;
-        System.out.println(speed + " " + turnValue);
 
         if (turnValue > 0) { // turningRight
             rightSpeed *= 1 - turnValue;
@@ -72,6 +72,19 @@ public class DriveTrain extends Subsystem {
         if (Math.abs(speed) < 0.01  && turnValue != 0) {
             leftSpeed = -turnValue;
             rightSpeed = turnValue;
+        }
+
+        if (drivingState == DrivingState.careful) {
+            leftSpeed *= 0.6;
+            rightSpeed *= 0.6;
+        }
+        else if (drivingState == DrivingState.regular) {
+            leftSpeed *= 0.8;
+            rightSpeed *= 0.8;
+        }
+        else if (drivingState == DrivingState.turbo) {
+            leftSpeed *= 0.95;
+            rightSpeed *= 0.95;
         }
 
         drive.tankDrive(leftSpeed, rightSpeed);

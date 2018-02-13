@@ -30,6 +30,7 @@ public class OI {
     }
 
     public Vector3D getLeftStick() {
+        System.out.println(joystick.getRawButton(1));
         if (joystick != null) return new Vector3D(joystick.getX(), joystick.getY(), joystick.getZ());
         return new Vector3D(0,0,0);
     }
@@ -47,5 +48,7 @@ public class OI {
         if (joystick != null) return joystick.getThrottle();
         return 0;
     }
-
+    public boolean buttonPressed(int buttonNumber) {
+        return joystick.getRawButton(buttonNumber);
+    }
 }
