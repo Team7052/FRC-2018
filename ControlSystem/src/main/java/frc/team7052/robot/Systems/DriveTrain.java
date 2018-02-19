@@ -7,7 +7,7 @@ import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 import frc.team7052.robot.Constants;
 import frc.team7052.robot.Structs.Vector3D;
-import frc.team7052.robot.Commands.DrivingState;
+import frc.team7052.robot.Enums.DrivingState;
 
 public class DriveTrain extends Subsystem {
     public static DifferentialDrive drive;
@@ -18,8 +18,8 @@ public class DriveTrain extends Subsystem {
     public static double prevZValue = 0.0;
 
     private DriveTrain() {
-        leftGroup = new SpeedControllerGroup(new Spark(Constants.kFrontLeftMotor), new Spark(Constants.kBackLeftMotor));
-        rightGroup = new SpeedControllerGroup(new Spark(Constants.kFrontRightMotor), new Spark(Constants.kBackRightMotor));
+        leftGroup = new SpeedControllerGroup(new Spark(Constants.kMotorFrontLeft), new Spark(Constants.kMotorBackLeft));
+        rightGroup = new SpeedControllerGroup(new Spark(Constants.kMotorFrontRight), new Spark(Constants.kMotorBackRight));
         leftGroup.setInverted(true);
         rightGroup.setInverted(true);
         drive = new DifferentialDrive(leftGroup, rightGroup);
@@ -27,7 +27,6 @@ public class DriveTrain extends Subsystem {
 
     @Override
     protected void initDefaultCommand() {
-
     }
 
     public static DriveTrain instance;
@@ -105,5 +104,3 @@ public class DriveTrain extends Subsystem {
         return speed;
     }
 }
-
-

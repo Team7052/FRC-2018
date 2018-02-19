@@ -1,16 +1,13 @@
 package frc.team7052.robot;
 
-import edu.wpi.cscore.CvSink;
-import edu.wpi.cscore.CvSource;
-import edu.wpi.cscore.UsbCamera;
 import edu.wpi.first.wpilibj.*;
 import edu.wpi.first.wpilibj.command.Scheduler;
-import frc.team7052.robot.Commands.DriveRobot;
+import frc.team7052.robot.Commands.Drive.DriveRobot;
 import frc.team7052.robot.Systems.OI;
-import org.opencv.core.Mat;
 
 public class Robot extends IterativeRobot {
     DriveRobot driveCommand;
+    Spark motor = new Spark(4);
     OI oi;
     @Override
     public void robotInit() {
@@ -46,6 +43,7 @@ public class Robot extends IterativeRobot {
     @Override
     public void teleopInit() {
         Scheduler.getInstance().add(driveCommand);
+
     }
 
     @Override
@@ -55,6 +53,21 @@ public class Robot extends IterativeRobot {
 
     @Override
     public void teleopPeriodic() {
+        System.out.println(oi.buttonPressed(Constants.kButtonSecondLeftBumper));
+        double left = oi.getLeftBumper();
+        double right = oi.getRightBumper();
+        if (left > 0.3) {
+            motor.set(0.7);
+            System.out.println("Left");
+        }
+        else if (right > 0.3) {
+            motor.set(-1.0);
+            System.out.println("Right");
+        }
+        else {
+            motor.set(-0.2);
+            System.out.println("stop");
+        }
         Scheduler.getInstance().run();
     }
 

@@ -8,16 +8,30 @@ public class Constants {
     public static double kSpeedSlowMultiplier = 0.6;
     public static double kRotationSlowMultiplier = 0.56;
 
+    // tank drive constants
     public static double kSlowestRobotSpeed = 0.45;
+
+    // claw constants
+    //TODO: Find arm positions when opened and closed
+    public static double kClawPositionOpen = 0;
+    public static double kClawPositionClose = 0;
+
 
     // tank drive control constants
 
     // wiring constants directly related to hardware: Don't change unless rewiring the robot
     // drive
-    public static int kFrontLeftMotor = 3;
-    public static int kBackLeftMotor = 2;
-    public static int kFrontRightMotor = 0;
-    public static int kBackRightMotor = 1;
+    public static int kMotorFrontLeft = 3;
+    public static int kMotorBackLeft = 2;
+    public static int kMotorFrontRight = 0;
+    public static int kMotorBackRight = 1;
+
+    // elevator lift motor
+    public static int kMotorElevatorLift = 4;
+
+    // claw motors
+    public static int kMotorClawWheels = 5;
+    public static int kMotorClawArms = 6;
 
     // buttons
     public static int kButtonA = 1;

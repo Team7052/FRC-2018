@@ -1,13 +1,13 @@
-package frc.team7052.robot.Commands;
+package frc.team7052.robot.Commands.Drive;
 
-import edu.wpi.first.wpilibj.command.Command;
+import frc.team7052.robot.Commands.CommandBase;
+import frc.team7052.robot.Enums.DrivingState;
 import frc.team7052.robot.Systems.DriveTrain;
 import frc.team7052.robot.Systems.OI;
 import frc.team7052.robot.Constants;
 
-public class DriveRobot extends Command {
+public class DriveRobot extends CommandBase {
     OI oi;
-    DriveTrain driveTrain;
 
     double prevZValue = 0;
     DrivingState drivingState = DrivingState.regular;
