@@ -12,9 +12,9 @@ public abstract class CommandBase extends Command {
     public static Claw claw;
 
     public static void init() {
-        driveTrain.getInstance();
-        elevatorLift.getInstance();
-        claw.getInstance();
+        driveTrain = driveTrain.getInstance();
+        elevatorLift = elevatorLift.getInstance();
+        claw = claw.getInstance();
     }
 
     @Override

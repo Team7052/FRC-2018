@@ -2,18 +2,15 @@ package frc.team7052.robot.Commands.Drive;
 
 import frc.team7052.robot.Commands.CommandBase;
 import frc.team7052.robot.Enums.DrivingState;
-import frc.team7052.robot.Systems.DriveTrain;
 import frc.team7052.robot.Systems.OI;
 import frc.team7052.robot.Constants;
 
 public class DriveRobot extends CommandBase {
     OI oi;
 
-    double prevZValue = 0;
     DrivingState drivingState = DrivingState.regular;
     public DriveRobot(OI oi) {
         this.oi = oi;
-        driveTrain = DriveTrain.getInstance();
         requires(driveTrain);
     }
 
@@ -37,7 +34,6 @@ public class DriveRobot extends CommandBase {
         }
 
         driveTrain.tankDrive(oi, drivingState);
-
     }
 
     @Override
