@@ -1,7 +1,7 @@
 package frc.team7052.robot.Commands.Claw;
 
 import frc.team7052.robot.Commands.CommandBase;
-import frc.team7052.robot.Enums.WheelDirection;
+import frc.team7052.robot.Enums.Direction;
 
 public class SpinClawWheelsOut extends CommandBase {
     public SpinClawWheelsOut() {
@@ -10,7 +10,7 @@ public class SpinClawWheelsOut extends CommandBase {
 
     @Override
     protected void initialize() {
-        claw.spinWheels(WheelDirection.out);
+        claw.spinWheels(Direction.out);
     }
 
     @Override

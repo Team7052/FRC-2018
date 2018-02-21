@@ -3,7 +3,7 @@ package frc.team7052.robot.Systems;
 import edu.wpi.first.wpilibj.Spark;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import frc.team7052.robot.Constants;
-import frc.team7052.robot.Enums.WheelDirection;
+import frc.team7052.robot.Enums.Direction;
 
 public class Claw extends Subsystem {
     private static Claw instance;
@@ -20,11 +20,13 @@ public class Claw extends Subsystem {
     //TODO: Find Claw positions when opened and closed
 
     /* Functions for claw manipulation */
-    public void spinWheels(WheelDirection wheelDirection) {
-        if (wheelDirection == WheelDirection.in)
+    public void spinWheels(Direction wheelDirection) {
+        if (wheelDirection == Direction.in)
             wheelsMotor.set(1);
-        else
+        else if (wheelDirection == Direction.out)
             wheelsMotor.set(-1);
+        else
+            wheelsMotor.set(0);
     }
     public void closeArms() {
         armsMotor.setPosition(Constants.kClawPositionClose);
@@ -32,6 +34,7 @@ public class Claw extends Subsystem {
     public void openArms() {
         armsMotor.setPosition(Constants.kClawPositionOpen);
     }
+
 
     @Override
     protected void initDefaultCommand() {

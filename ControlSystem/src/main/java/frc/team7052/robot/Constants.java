@@ -21,27 +21,28 @@ public class Constants {
 
     // wiring constants directly related to hardware: Don't change unless rewiring the robot
     // drive
-    public static int kMotorFrontLeft = 3;
-    public static int kMotorBackLeft = 2;
-    public static int kMotorFrontRight = 0;
-    public static int kMotorBackRight = 1;
+    public static final int kMotorFrontLeft = 3;
+    public static final int kMotorBackLeft = 0;
+    public static final int kMotorFrontRight = 1;
+    public static final int kMotorBackRight = 2;
 
     // elevator lift motor
-    public static int kMotorElevatorLift = 4;
+    public static final int kMotorElevatorLift = 4;
+    public static final int kLiftLimitSwitchAnalog = 1;
 
     // claw motors
-    public static int kMotorClawWheels = 5;
-    public static int kMotorClawArms = 6;
+    public static final int kMotorClawWheels = 5;
+    public static final int kMotorClawArms = 6;
 
     // buttons
-    public static int kButtonA = 1;
-    public static int kButtonB = 2;
-    public static int kButtonX = 3;
-    public static int kButtonY = 4;
-    public static int kButtonSecondLeftBumper = 5;
-    public static int kButtonSecondRightBumper = 6;
-    public static int kButtonBack = 7;
-    public static int kButtonStart = 8;
-    public static int kButtonLeftJoystickPress = 9;
-    public static int kButtonRightJoystickPress = 10;
+    public static final int kButtonA = 1;
+    public static final int kButtonB = 2;
+    public static final int kButtonX = 3;
+    public static final int kButtonY = 4;
+    public static final int kButtonSecondLeftBumper = 5;
+    public static final int kButtonSecondRightBumper = 6;
+    public static final int kButtonBack = 7;
+    public static final int kButtonStart = 8;
+    public static final int kButtonLeftJoystickPress = 9;
+    public static final int kButtonRightJoystickPress = 10;
 }
