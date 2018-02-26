@@ -45,10 +45,10 @@ public class ElevatorLift extends Subsystem {
             liftMotor.set(0.2);
         }
         else if (leftPressed) {
-            liftMotor.set(-0.5);
+            liftMotor.set(-0.7);
         }
         else {
-            liftMotor.set(0.6);
+            liftMotor.set(1.0);
         }
     }
 

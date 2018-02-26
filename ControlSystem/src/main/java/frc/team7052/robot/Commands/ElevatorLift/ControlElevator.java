@@ -30,31 +30,6 @@ public class ControlElevator extends CommandBase {
     protected void execute() {
         //elevatorLift.liftElevator(oi);
         elevatorLift.elevatorManual(oi);
-        /*if (leftTriggered) {
-            boolean finished = elevatorLift.lower1Stage(initElevatorStage);
-            if (finished) {
-                if (elevatorLift.currentSwitch == 1) elevatorLift.currentSwitch = 0;
-                elevatorLift.hover();
-                leftTriggered = false;
-            }
-        }
-        else if (rightTriggered) {
-            boolean finished = elevatorLift.lift1Stage(initElevatorStage);
-            if (finished) {
-                if (elevatorLift.currentSwitch == 3) elevatorLift.currentSwitch = 4;
-                elevatorLift.hover();
-                rightTriggered = false;
-            }
-        }
-        else {
-            elevatorLift.hover();
-            if (oi.buttonPressed(Constants.kButtonSecondLeftBumper)) {
-                leftTriggered = true;
-            }
-            else if (oi.buttonPressed(Constants.kButtonSecondRightBumper)) {
-                rightTriggered = true;
-            }
-        }*/
     }
 
     @Override

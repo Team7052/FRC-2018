@@ -5,12 +5,11 @@ import com.kauailabs.navx.frc.AHRS;
 import edu.wpi.first.wpilibj.*;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
-import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 import frc.team7052.robot.Constants;
 import frc.team7052.robot.Structs.Vector3D;
 import frc.team7052.robot.Enums.DrivingState;
 
-public class DriveTrain extends Subsystem implements PIDOutput {
+public class DriveTrain extends Subsystem {
     public static DifferentialDrive drive;
     private SpeedControllerGroup leftGroup;
     private SpeedControllerGroup rightGroup;
@@ -19,15 +18,6 @@ public class DriveTrain extends Subsystem implements PIDOutput {
 
     public static boolean drivingCarefully = false;
     public static double prevZValue = 0.0;
-
-    // pid values
-    static final double kP = 0.03;
-    static final double kI = 0.00;
-    static final double kD = 0.00;
-    static final double kF = 0.00;
-    static final double kTolerance = 2.0;
-
-    public static PIDController turnController;
 
     private DriveTrain() {
         leftGroup = new SpeedControllerGroup(new Spark(Constants.kMotorFrontLeft), new Spark(Constants.kMotorBackLeft));
@@ -41,14 +31,6 @@ public class DriveTrain extends Subsystem implements PIDOutput {
         catch(RuntimeException exc) {
             exc.printStackTrace();
         }
-
-        // initializing turn controller
-        turnController = new PIDController(kP, kI, kD, kF, ahrs, this);
-        turnController.setAbsoluteTolerance(kTolerance);
-        turnController.setInputRange(-180.0, 180.0);
-        turnController.setOutputRange(-1.0, 1.0);
-        turnController.setContinuous(true);
-        turnController.disable();
 
         ahrs.reset();
 
@@ -130,19 +112,5 @@ public class DriveTrain extends Subsystem implements PIDOutput {
         if (speed > 0 && speed < 0.45) speed = 0.45;
         else if (-0.45 < speed && speed < 0) speed = -0.45;
         return speed;
-    }
-    static double rate;
-    //rotates angle clockwise for positive counter-clockwise for negative
-    public static void rotateToAngle(double angle) {
-        boolean rotating = false;
-        turnController.enable();
-        turnController.setSetpoint(ahrs.getAngle() + angle);
-        drive.arcadeDrive(0, rate);
-        System.out.println(rate);
-    }
-
-    @Override
-    public void pidWrite(double output) {
-        rate = output;
     }
 }

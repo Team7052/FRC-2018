@@ -2,34 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="cb3dfbe2-91f6-4005-9c82-8b49d7aaea3a" name="Default" comment="">
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/java/frc/team7052/robot/Commands/Claw/ControlArm.java" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/java/frc/team7052/robot/Commands/ElevatorLift/ControlElevator.java" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/java/frc/team7052/robot/Commands/ElevatorLift/LowerElevator.java" />
-      <change beforePath="$PROJECT_DIR$/.gradle/4.4/fileHashes/fileHashes.bin" afterPath="$PROJECT_DIR$/.gradle/4.4/fileHashes/fileHashes.bin" />
-      <change beforePath="$PROJECT_DIR$/.gradle/4.4/fileHashes/fileHashes.lock" afterPath="$PROJECT_DIR$/.gradle/4.4/fileHashes/fileHashes.lock" />
-      <change beforePath="$PROJECT_DIR$/.gradle/4.4/taskHistory/taskHistory.bin" afterPath="$PROJECT_DIR$/.gradle/4.4/taskHistory/taskHistory.bin" />
-      <change beforePath="$PROJECT_DIR$/.gradle/4.4/taskHistory/taskHistory.lock" afterPath="$PROJECT_DIR$/.gradle/4.4/taskHistory/taskHistory.lock" />
-      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" />
-      <change beforePath="$PROJECT_DIR$/ControlSystem.iws" afterPath="$PROJECT_DIR$/ControlSystem.iws" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/frc/team7052/robot/Commands/Claw/SpinClawWheelsIn.class" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/frc/team7052/robot/Commands/Claw/SpinClawWheelsOut.class" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/frc/team7052/robot/Commands/Drive/TeleopCommandGroup.class" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/frc/team7052/robot/Commands/LiftElevator.class" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/frc/team7052/robot/Constants.class" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/frc/team7052/robot/Enums/WheelDirection.class" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/frc/team7052/robot/Robot.class" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/frc/team7052/robot/Systems/Claw.class" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/frc/team7052/robot/Systems/DriveTrain.class" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/frc/team7052/robot/Systems/ElevatorLift.class" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/build/libs/ControlSystem.jar" afterPath="$PROJECT_DIR$/build/libs/ControlSystem.jar" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/frc/team7052/robot/Commands/Claw/SpinClawWheelsIn.java" afterPath="$PROJECT_DIR$/src/main/java/frc/team7052/robot/Commands/Claw/SpinClawWheelsIn.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/frc/team7052/robot/Commands/Claw/SpinClawWheelsOut.java" afterPath="$PROJECT_DIR$/src/main/java/frc/team7052/robot/Commands/Claw/SpinClawWheelsOut.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/frc/team7052/robot/Commands/Drive/TeleopCommandGroup.java" afterPath="$PROJECT_DIR$/src/main/java/frc/team7052/robot/Commands/TeleopCommandGroup.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/frc/team7052/robot/Commands/LiftElevator.java" afterPath="$PROJECT_DIR$/src/main/java/frc/team7052/robot/Commands/ElevatorLift/LiftElevator.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/frc/team7052/robot/Constants.java" afterPath="$PROJECT_DIR$/src/main/java/frc/team7052/robot/Constants.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/frc/team7052/robot/Enums/WheelDirection.java" afterPath="$PROJECT_DIR$/src/main/java/frc/team7052/robot/Enums/Direction.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/frc/team7052/robot/Robot.java" afterPath="$PROJECT_DIR$/src/main/java/frc/team7052/robot/Robot.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/frc/team7052/robot/Systems/Claw.java" afterPath="$PROJECT_DIR$/src/main/java/frc/team7052/robot/Systems/Claw.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/frc/team7052/robot/Commands/ElevatorLift/ControlElevator.java" afterPath="$PROJECT_DIR$/src/main/java/frc/team7052/robot/Commands/ElevatorLift/ControlElevator.java" />
       <change beforePath="$PROJECT_DIR$/src/main/java/frc/team7052/robot/Systems/DriveTrain.java" afterPath="$PROJECT_DIR$/src/main/java/frc/team7052/robot/Systems/DriveTrain.java" />
       <change beforePath="$PROJECT_DIR$/src/main/java/frc/team7052/robot/Systems/ElevatorLift.java" afterPath="$PROJECT_DIR$/src/main/java/frc/team7052/robot/Systems/ElevatorLift.java" />
     </list>
@@ -100,23 +73,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="DriveRobot.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/frc/team7052/robot/Commands/Drive/DriveRobot.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="105">
-              <caret line="7" column="13" lean-forward="false" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ElevatorLift.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="ElevatorLift.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/frc/team7052/robot/Systems/ElevatorLift.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-137">
-              <caret line="77" column="9" lean-forward="false" selection-start-line="77" selection-start-column="9" selection-end-line="77" selection-end-column="9" />
+            <state relative-caret-position="198">
+              <caret line="59" column="0" lean-forward="true" selection-start-line="59" selection-start-column="0" selection-end-line="59" selection-end-column="0" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#1285#1286#0" expanded="true" />
@@ -130,16 +91,15 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="DriveTrain.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="DriveTrain.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/frc/team7052/robot/Systems/DriveTrain.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-1309">
-              <caret line="34" column="36" lean-forward="true" selection-start-line="34" selection-start-column="36" selection-end-line="34" selection-end-column="36" />
+            <state relative-caret-position="165">
+              <caret line="11" column="13" lean-forward="false" selection-start-line="11" selection-start-column="13" selection-end-line="11" selection-end-column="13" />
               <folding>
-                <element signature="e#3970#3971#0" expanded="true" />
-                <element signature="e#4003#4004#0" expanded="true" />
-                <element signature="e#5109#5110#0" expanded="true" />
-                <element signature="e#5138#5139#0" expanded="true" />
+                <element signature="imports" expanded="true" />
+                <element signature="e#3296#3297#0" expanded="true" />
+                <element signature="e#3329#3330#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -170,13 +130,23 @@
       <file leaf-file-name="ControlElevator.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/frc/team7052/robot/Commands/ElevatorLift/ControlElevator.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-181">
-              <caret line="28" column="13" lean-forward="true" selection-start-line="28" selection-start-column="13" selection-end-line="28" selection-end-column="13" />
+            <state relative-caret-position="239">
+              <caret line="31" column="40" lean-forward="false" selection-start-line="31" selection-start-column="40" selection-end-line="31" selection-end-column="40" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#1949#1950#0" expanded="true" />
-                <element signature="e#1977#1978#0" expanded="true" />
+                <element signature="e#989#990#0" expanded="true" />
+                <element signature="e#1017#1018#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="CommandBase.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/frc/team7052/robot/Commands/CommandBase.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="195">
+              <caret line="16" column="34" lean-forward="false" selection-start-line="16" selection-start-column="34" selection-end-line="16" selection-end-column="34" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -748,10 +718,10 @@
         <option value="$PROJECT_DIR$/src/main/java/frc/team7052/robot/Commands/TeleopCommandGroup.java" />
         <option value="$PROJECT_DIR$/src/main/java/frc/team7052/robot/Commands/ElevatorLift/LiftElevator.java" />
         <option value="$PROJECT_DIR$/src/main/java/frc/team7052/robot/Robot.java" />
-        <option value="$PROJECT_DIR$/src/main/java/frc/team7052/robot/Systems/ElevatorLift.java" />
+        <option value="$PROJECT_DIR$/src/main/java/frc/team7052/robot/Constants.java" />
         <option value="$PROJECT_DIR$/src/main/java/frc/team7052/robot/Systems/DriveTrain.java" />
         <option value="$PROJECT_DIR$/src/main/java/frc/team7052/robot/Commands/ElevatorLift/ControlElevator.java" />
-        <option value="$PROJECT_DIR$/src/main/java/frc/team7052/robot/Constants.java" />
+        <option value="$PROJECT_DIR$/src/main/java/frc/team7052/robot/Systems/ElevatorLift.java" />
       </list>
     </option>
   </component>
@@ -760,7 +730,7 @@
     <option name="LAST_EDITED_TAB_NAME" />
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="y" value="22" />
+    <option name="y" value="302" />
     <option name="width" value="1280" />
     <option name="height" value="778" />
   </component>
@@ -1385,18 +1355,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/frc/team7052/robot/Commands/CommandBase.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="239">
-          <caret line="16" column="34" lean-forward="false" selection-start-line="16" selection-start-column="34" selection-end-line="16" selection-end-column="34" />
-          <folding>
-            <element signature="imports" expanded="false" />
-            <element signature="e#609#610#0" expanded="false" />
-            <element signature="e#637#638#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/frc/team7052/robot/Systems/OI.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="137">
@@ -1451,36 +1409,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/frc/team7052/robot/Commands/ElevatorLift/LowerElevator.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="270">
-          <caret line="18" column="24" lean-forward="false" selection-start-line="18" selection-start-column="24" selection-end-line="18" selection-end-column="24" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#769#770#0" expanded="true" />
-            <element signature="e#805#806#0" expanded="true" />
-            <element signature="e#857#858#0" expanded="true" />
-            <element signature="e#885#886#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/frc/team7052/robot/Systems/ElevatorLift.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-137">
-          <caret line="77" column="9" lean-forward="false" selection-start-line="77" selection-start-column="9" selection-end-line="77" selection-end-column="9" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#1285#1286#0" expanded="true" />
-            <element signature="e#1346#1347#0" expanded="true" />
-            <element signature="method#lift1Stage#0;class#ElevatorLift#0" expanded="false" />
-            <element signature="method#lower1Stage#0;class#ElevatorLift#0" expanded="false" />
-            <element signature="e#5010#5011#0" expanded="true" />
-            <element signature="e#5044#5045#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/frc/team7052/robot/Systems/Claw.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="460">
@@ -1505,27 +1433,64 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/frc/team7052/robot/Commands/ElevatorLift/ControlElevator.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/frc/team7052/robot/Commands/CommandBase.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-181">
-          <caret line="28" column="13" lean-forward="true" selection-start-line="28" selection-start-column="13" selection-end-line="28" selection-end-column="13" />
+        <state relative-caret-position="195">
+          <caret line="16" column="34" lean-forward="false" selection-start-line="16" selection-start-column="34" selection-end-line="16" selection-end-column="34" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/frc/team7052/robot/Commands/ElevatorLift/LowerElevator.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="270">
+          <caret line="18" column="24" lean-forward="false" selection-start-line="18" selection-start-column="24" selection-end-line="18" selection-end-column="24" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#1949#1950#0" expanded="true" />
-            <element signature="e#1977#1978#0" expanded="true" />
+            <element signature="e#769#770#0" expanded="true" />
+            <element signature="e#805#806#0" expanded="true" />
+            <element signature="e#857#858#0" expanded="true" />
+            <element signature="e#885#886#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/frc/team7052/robot/Commands/ElevatorLift/ControlElevator.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="239">
+          <caret line="31" column="40" lean-forward="false" selection-start-line="31" selection-start-column="40" selection-end-line="31" selection-end-column="40" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#989#990#0" expanded="true" />
+            <element signature="e#1017#1018#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/frc/team7052/robot/Systems/DriveTrain.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1309">
-          <caret line="34" column="36" lean-forward="true" selection-start-line="34" selection-start-column="36" selection-end-line="34" selection-end-column="36" />
+        <state relative-caret-position="165">
+          <caret line="11" column="13" lean-forward="false" selection-start-line="11" selection-start-column="13" selection-end-line="11" selection-end-column="13" />
           <folding>
-            <element signature="e#3970#3971#0" expanded="true" />
-            <element signature="e#4003#4004#0" expanded="true" />
-            <element signature="e#5109#5110#0" expanded="true" />
-            <element signature="e#5138#5139#0" expanded="true" />
+            <element signature="imports" expanded="true" />
+            <element signature="e#3296#3297#0" expanded="true" />
+            <element signature="e#3329#3330#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/frc/team7052/robot/Systems/ElevatorLift.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="198">
+          <caret line="59" column="0" lean-forward="true" selection-start-line="59" selection-start-column="0" selection-end-line="59" selection-end-column="0" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#1285#1286#0" expanded="true" />
+            <element signature="e#1346#1347#0" expanded="true" />
+            <element signature="method#lift1Stage#0;class#ElevatorLift#0" expanded="false" />
+            <element signature="method#lower1Stage#0;class#ElevatorLift#0" expanded="false" />
+            <element signature="e#5010#5011#0" expanded="true" />
+            <element signature="e#5044#5045#0" expanded="true" />
           </folding>
         </state>
       </provider>
