@@ -7,43 +7,24 @@ import edu.wpi.first.wpilibj.command.Scheduler;
 import frc.team7052.robot.Commands.CommandBase;
 import frc.team7052.robot.Commands.TeleopCommandGroup;
 import frc.team7052.robot.Systems.OI;
-
-import javax.swing.plaf.synth.SynthCheckBoxUI;
+import frc.team7052.robot.Vision.MainVision;
 
 public class Robot extends IterativeRobot {
     OI oi;
 
     TeleopCommandGroup teleopCommandGroup;
 
-    AHRS ahrs;
+    MainVision mainVision;
+
     Scheduler scheduler;
 
     @Override
     public void robotInit() {
         CommandBase.init();
-        oi = new OI();
-        teleopCommandGroup = new TeleopCommandGroup(oi);
-        scheduler = Scheduler.getInstance();
-
-        //motor = new Spark(5);
-
-        // TODO: Create Vision System
-        /*new Thread(() -> {
-            UsbCamera camera = CameraServer.getInstance().startAutomaticCapture();
-            camera.setResolution(320, 240);
-
-            CvSink cvSink = CameraServer.getInstance().getVideo();
-            CvSource outputStream = CameraServer.getInstance().putVideo("Blur", 320, 240);
-
-            Mat source = new Mat();
-            Mat output = new Mat();
-
-            while(!Thread.interrupted()) {
-                cvSink.grabFrame(source);
-                outputStream.putFrame(output);
-            }
-        }).start();*/
-
+        mainVision.getInstance(); // starts computer vision
+        oi = new OI(); // get instance for the joystick
+        teleopCommandGroup = new TeleopCommandGroup(oi); // add teleop command group
+        scheduler = Scheduler.getInstance(); // local variable for static variable scheduler
     }
 
     @Override
@@ -79,17 +60,5 @@ public class Robot extends IterativeRobot {
 
     @Override
     public void testPeriodic() {
-        if (oi.buttonPressed(Constants.kButtonA)) {
-            CommandBase.driveTrain.rotateToAngle(45);
-        }
-        else if (oi.buttonPressed(Constants.kButtonB)) {
-            CommandBase.driveTrain.rotateToAngle(30);
-        }
-        else if (oi.buttonPressed(Constants.kButtonX)) {
-            CommandBase.driveTrain.rotateToAngle(80);
-        }
-        else if (oi.buttonPressed(Constants.kButtonY)) {
-            CommandBase.driveTrain.rotateToAngle(-90);
-        }
     }
 }
