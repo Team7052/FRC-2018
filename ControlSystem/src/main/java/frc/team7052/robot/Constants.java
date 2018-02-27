@@ -16,6 +16,8 @@ public class Constants {
     public static double kClawPositionOpen = 0;
     public static double kClawPositionClose = 0;
 
+    // camera control constants
+    public static int kCameraExposureTime = 1; // in milliseconds
 
     // tank drive control constants
 

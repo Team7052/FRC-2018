@@ -13,7 +13,6 @@ public class Robot extends IterativeRobot {
     OI oi;
 
     TeleopCommandGroup teleopCommandGroup;
-
     MainVision mainVision;
 
     Scheduler scheduler;
@@ -40,6 +39,7 @@ public class Robot extends IterativeRobot {
     @Override
     public void teleopInit() {
         scheduler.removeAll();
+        //teleop command
         Scheduler.getInstance().add(teleopCommandGroup);
     }
 

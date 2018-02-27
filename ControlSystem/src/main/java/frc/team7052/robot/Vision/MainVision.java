@@ -4,6 +4,7 @@ import edu.wpi.cscore.CvSink;
 import edu.wpi.cscore.CvSource;
 import edu.wpi.cscore.UsbCamera;
 import edu.wpi.first.wpilibj.CameraServer;
+import frc.team7052.robot.Constants;
 import org.opencv.core.Mat;
 
 public class MainVision {
@@ -12,9 +13,7 @@ public class MainVision {
     private static UsbCamera camera;
 
     public static MainVision getInstance() {
-        if (instance == null) {
-            instance = new MainVision();
-        }
+        if (instance == null) instance = new MainVision();
         return instance;
     }
 
@@ -34,5 +33,14 @@ public class MainVision {
                 outputStream.putFrame(output);
             }
         }).start();
+    }
+
+    public void setupCameraVisionTrackingMode() {
+
+    }
+
+    public void trackVisionTarget() {
+        //reflective tape
+
     }
 }
