@@ -6,6 +6,7 @@ import edu.wpi.cscore.UsbCamera;
 import edu.wpi.first.wpilibj.CameraServer;
 import frc.team7052.robot.Constants;
 import org.opencv.core.Mat;
+import org.opencv.videoio.VideoCapture;
 
 public class MainVision {
 

@@ -7,8 +7,8 @@ import frc.team7052.robot.Enums.Direction;
 
 public class Claw extends Subsystem {
     private static Claw instance;
-    Spark wheelsMotor = new Spark(Constants.kMotorClawWheels);
-    Spark armsMotor = new Spark(Constants.kMotorClawArms);
+    Spark verticalLiftMotor = new Spark(Constants.kMotorClawVerticalLift);
+    Spark floatingArmMotor = new Spark(Constants.kMotorClawFloatingArm);
 
     private Claw() {
     }
@@ -20,21 +20,26 @@ public class Claw extends Subsystem {
     //TODO: Find Claw positions when opened and closed
 
     /* Functions for claw manipulation */
-    public void spinWheels(Direction wheelDirection) {
-        if (wheelDirection == Direction.in)
-            wheelsMotor.set(1);
-        else if (wheelDirection == Direction.out)
-            wheelsMotor.set(-1);
-        else
-            wheelsMotor.set(0);
+    public void closeFloatingArm() {
+        floatingArmMotor.set(0.2);
     }
-    public void closeArms() {
-        armsMotor.setPosition(Constants.kClawPositionClose);
-    }
-    public void openArms() {
-        armsMotor.setPosition(Constants.kClawPositionOpen);
+    public void openFloatingArm() {
+        floatingArmMotor.set(-0.2);
     }
 
+    public void stopFloatingArm() {
+        floatingArmMotor.set(0);
+    }
+
+    public void lowerArm() {
+        verticalLiftMotor.set(0.2);
+    }
+    public void liftArm() {
+        verticalLiftMotor.set(-0.2);
+    }
+    public void hoverArm() {
+        verticalLiftMotor.set(0);
+    }
 
     @Override
     protected void initDefaultCommand() {

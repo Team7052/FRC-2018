@@ -9,7 +9,8 @@ public class OpenArms extends CommandBase {
 
     @Override
     protected void initialize() {
-        claw.openArms();
+        setTimeout(1.0);
+        claw.openFloatingArm();
     }
 
     @Override

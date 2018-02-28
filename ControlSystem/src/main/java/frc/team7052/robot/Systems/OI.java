@@ -1,11 +1,6 @@
 package frc.team7052.robot.Systems;
 
-import edu.wpi.first.wpilibj.GenericHID;
 import edu.wpi.first.wpilibj.Joystick;
-import edu.wpi.first.wpilibj.buttons.JoystickButton;
-import frc.team7052.robot.Constants;
-import frc.team7052.robot.Structs.Vector3D;
-
 
 public class OI {
     /*
@@ -29,23 +24,8 @@ public class OI {
         joystick = new Joystick(defaultPort);
     }
 
-    public Vector3D getLeftStick() {
-        if (joystick != null) return new Vector3D(joystick.getX(), joystick.getY(), joystick.getZ());
-        return new Vector3D(0,0,0);
-    }
-    public Vector3D getRightStick() {
-        double xAxis = joystick.getRawAxis(4);
-        double yAxis = joystick.getRawAxis(5);
-        if (joystick != null) return new Vector3D(xAxis,yAxis,0);
-        return new Vector3D(0,0,0);
-    }
-    public double getLeftBumper() {
-        if (joystick != null) return joystick.getTwist();
-        return 0;
-    }
-    public double getRightBumper() {
-        if (joystick != null) return joystick.getThrottle();
-        return 0;
+    public double getAxis(int axis) {
+        return joystick.getRawAxis(axis);
     }
     public boolean buttonPressed(int buttonNumber) {
         return joystick.getRawButton(buttonNumber);

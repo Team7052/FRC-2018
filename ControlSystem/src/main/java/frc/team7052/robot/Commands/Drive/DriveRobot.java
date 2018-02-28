@@ -20,14 +20,11 @@ public class DriveRobot extends CommandBase {
 
     @Override
     protected void execute() {
-        if (oi.buttonPressed(Constants.kButtonLeftJoystickPress)) {
-            drivingState = DrivingState.turbo;
-        }
-        else {
-            drivingState = DrivingState.regular;
-        }
-        if (Math.abs(oi.getLeftBumper()) > 0.01) {
+        if (Math.abs(oi.getAxis(Constants.kAxisLeftBumper)) > 0.01) {
             drivingState = DrivingState.careful;
+        }
+        else if (Math.abs(oi.getAxis(Constants.kAxisRightBumper)) > 0.01) {
+            drivingState = DrivingState.turbo;
         }
         else {
             drivingState = DrivingState.regular;

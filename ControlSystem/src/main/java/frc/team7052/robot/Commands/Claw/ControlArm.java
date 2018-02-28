@@ -19,10 +19,13 @@ public class ControlArm extends CommandBase {
     @Override
     protected void execute() {
         if (oi.buttonPressed(Constants.kButtonA)) {
-            claw.spinWheels(Direction.out);
+            claw.openFloatingArm();
+        }
+        else if (oi.buttonPressed(Constants.kButtonB)) {
+            claw.closeFloatingArm();
         }
         else {
-            claw.spinWheels(Direction.stationary);
+            claw.stopFloatingArm();
         }
     }
 

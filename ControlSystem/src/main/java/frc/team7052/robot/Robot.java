@@ -19,9 +19,9 @@ public class Robot extends IterativeRobot {
 
     @Override
     public void robotInit() {
-        CommandBase.init();
-        mainVision.getInstance(); // starts computer vision
         oi = new OI(); // get instance for the joystick
+        CommandBase.init(oi);
+        //mainVision.getInstance(); // starts computer vision
         teleopCommandGroup = new TeleopCommandGroup(oi); // add teleop command group
         scheduler = Scheduler.getInstance(); // local variable for static variable scheduler
     }

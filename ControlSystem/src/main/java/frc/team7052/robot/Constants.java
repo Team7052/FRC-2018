@@ -33,10 +33,17 @@ public class Constants {
     public static final int kLiftLimitSwitchAnalog = 1;
 
     // claw motors
-    public static final int kMotorClawWheels = 5;
-    public static final int kMotorClawArms = 6;
+    public static final int kMotorClawVerticalLift = 5;
+    public static final int kMotorClawFloatingArm = 6;
 
     // buttons
+    public static final int kAxisLeftStickX = 0;
+    public static final int kAxisLeftStickY = 1;
+    public static final int kAxisLeftBumper = 2;
+    public static final int kAxisRightBumper = 3;
+    public static final int kAxisRightStickX = 4;
+    public static final int kAxisRightStickY = 5;
+
     public static final int kButtonA = 1;
     public static final int kButtonB = 2;
     public static final int kButtonX = 3;

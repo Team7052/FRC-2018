@@ -10,6 +10,6 @@ public class TeleopCommandGroup extends CommandGroup {
     public TeleopCommandGroup(OI oi) {
         this.oi = oi;
         addParallel(new DriveRobot(oi));
-        addParallel(new ControlElevator(oi));
+        //addParallel(new ControlElevator(oi));
     }
 }
