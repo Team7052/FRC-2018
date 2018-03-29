@@ -10,9 +10,9 @@ package org.usfirst.frc.team7052.robot;
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj.command.Scheduler;
 
-import org.usfirst.frc.team7052.robot.commands.CommandBase;
-import org.usfirst.frc.team7052.robot.commands.TeleopCommandGroup;
-import org.usfirst.frc.team7052.robot.commands.CoolAuton;
+import java.util.*;
+
+import org.usfirst.frc.team7052.robot.commands.*;
 
 /**
  * The VM is configured to automatically run this class, and to call the
@@ -21,64 +21,64 @@ import org.usfirst.frc.team7052.robot.commands.CoolAuton;
  * creating this project, you must also update the build.properties file in the
  * project.
  */
-	public class Robot extends TimedRobot {
-	    OI driveOI;
-	    OI liftOI;
-	    CoolAuton coolAuton;
+public class Robot extends TimedRobot {
+    OI driveOI;
+    OI liftOI;
+    AutoDriveStraight autoCommand;
 
-	    TeleopCommandGroup teleopCommandGroup;
-	    MainVision mainVision;
+    TeleopCommandGroup teleopCommandGroup;
+    MainVision mainVision;
 
-	    Scheduler scheduler;
+    Scheduler scheduler;
+    List<OI> ois = new ArrayList<>();
 
-	    @Override
-	    public void robotInit() {
-	        driveOI = new OI(0); // get instance for the joystick
-	        liftOI = new OI(1);
-	        CommandBase.init(driveOI, liftOI);
-	        mainVision = MainVision.getInstance();
-	        teleopCommandGroup = new TeleopCommandGroup(driveOI, liftOI); // add teleop command group
-	        scheduler = Scheduler.getInstance(); // local variable for static variable scheduler
-	        coolAuton = new CoolAuton();
-	    }
+    @Override
+    public void robotInit() {
+    		// TODO: use smart dashboard to load joysticks
+    		// fill here
+		// initialize ois
+        CommandBase.init();
+        mainVision = MainVision.getInstance();
+        teleopCommandGroup = new TeleopCommandGroup(driveOI, liftOI); // add teleop command group
+        scheduler = Scheduler.getInstance(); // local variable for static variable scheduler
+        autoCommand = new AutoDriveStraight();
+    }
 
-	    @Override
-	    public void disabledInit() {
-	        Scheduler.getInstance().removeAll();
-	    }
+    @Override
+    public void disabledInit() {
+        Scheduler.getInstance().removeAll();
+    }
 
-	    @Override
-	    public void autonomousInit() {
-	       scheduler.removeAll();
-	        //scheduler.add(new CoolAuton());
-	       coolAuton.start();
-	    	
-	    	
-	    }
+    @Override
+    public void autonomousInit() {
+       scheduler.removeAll();
+        //scheduler.add(new CoolAuton());
+       autoCommand.start();
+    }
 
-	    @Override
-	    public void teleopInit() {
-	        scheduler.removeAll();
-	        //teleop command
-	        Scheduler.getInstance().add(teleopCommandGroup);
-	    }
+    @Override
+    public void teleopInit() {
+        scheduler.removeAll();
+        //teleop command
+        Scheduler.getInstance().add(teleopCommandGroup);
+    }
 
-	    @Override
-	    public void autonomousPeriodic() {
-	    	scheduler.run();
-	    }
+    @Override
+    public void autonomousPeriodic() {
+    	scheduler.run();
+    }
 
-	    @Override
-	    public void teleopPeriodic() {
-	        scheduler.run();
-	    }
+    @Override
+    public void teleopPeriodic() {
+        scheduler.run();
+    }
 
-	    @Override
-	    public void testInit() {
-	        scheduler.removeAll();
-	    }
+    @Override
+    public void testInit() {
+        scheduler.removeAll();
+    }
 
-	    @Override
-	    public void testPeriodic() {
-	    }
-	}
+    @Override
+    public void testPeriodic() {
+    }
+}

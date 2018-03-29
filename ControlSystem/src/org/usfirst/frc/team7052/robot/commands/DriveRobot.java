@@ -1,8 +1,8 @@
 package org.usfirst.frc.team7052.robot.commands;
 
-import org.usfirst.frc.team7052.robot.Constants;
 import org.usfirst.frc.team7052.robot.DrivingState;
 import org.usfirst.frc.team7052.robot.OI;
+import org.usfirst.frc.team7052.robot.OIMap;
 
 public class DriveRobot extends CommandBase {
     OI oi;
@@ -19,10 +19,10 @@ public class DriveRobot extends CommandBase {
 
     @Override
     protected void execute() {
-        if (Math.abs(oi.getAxis(Constants.kAxisLeftBumper)) > 0.01) {
+        if (Math.abs(oi.getAxis(OIMap.leftBumper)) > 0.01) {
             drivingState = DrivingState.careful;
         }
-        else if (Math.abs(oi.getAxis(Constants.kAxisRightBumper)) > 0.01) {
+        else if (Math.abs(oi.getAxis(OIMap.rightBumper)) > 0.01) {
             drivingState = DrivingState.turbo;
         }
         else {

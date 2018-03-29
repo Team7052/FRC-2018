@@ -7,6 +7,7 @@
 
 package org.usfirst.frc.team7052.robot;
 
+import org.usfirst.frc.team7052.robot.Constants.*;
 import edu.wpi.first.wpilibj.Joystick;
 
 /**
@@ -14,30 +15,63 @@ import edu.wpi.first.wpilibj.Joystick;
  * interface to the commands and command groups that allow control of the robot.
  */
 public class OI {
-	/*
-     * Joystick Notes from Kevin Bai
-     * left stick = getX(), getY(), getZ(); values between -1 to 1
-     * right stick = TODO
-     * d-pad = TODO
-     * left bumper = getThrottle(); values between 0 and 1
-     * left bumper 2 = TODO
-     * right bumper = getTwist(); values between 0 and 1
-     * right bumper 2 = TODO
-     * mode = TODO
-     * select = TODO
-     * */
-
+    
+    public enum JoystickType {
+		xbox, logitech, ps4
+    }
+    
     public Joystick joystick;
+    public JoystickType type;	
+    
+    Xbox xbox;
+    Logitech logitech;
+    PS4 ps4;
 
     public OI(int joystickPort) {
         joystick = new Joystick(joystickPort);
+        type = JoystickType.logitech;
+    }
+    
+    public OI(int joystickPort, JoystickType type) {
+    		joystick = new Joystick(joystickPort);
+        this.type = type;
+        
+        switch (type) {
+	        case xbox:
+	        		xbox = new Xbox();
+	        		break;
+	        case logitech:
+	        		logitech = new Logitech();
+	        		break;
+	        case ps4:
+	        		ps4 = new PS4();
+	        		break;
+        }
     }
 
-    public double getAxis(int axis) {
-        return joystick.getRawAxis(axis);
+    public double getAxis(OIMap map) {
+    		switch (type) {
+    			case logitech:
+    				return joystick.getRawAxis(logitech.axis.get(map));
+    			case xbox:
+    				return joystick.getRawAxis(xbox.axis.get(map));
+    			case ps4:
+    				return joystick.getRawAxis(ps4.axis.get(map));
+    		}
+    		return 0;
     }
-    public boolean buttonPressed(int buttonNumber) {
-        return joystick.getRawButton(buttonNumber);
+    public boolean buttonPressed(OIMap map) {
+    		switch (type) {
+    		case logitech:
+    			return joystick.getRawButton(logitech.buttons.get(map));
+    		case xbox:
+    			return joystick.getRawButton(xbox.buttons.get(map));
+    		case ps4:
+    			return joystick.getRawButton(ps4.buttons.get(map));
+    		}
+    		return false;
     }
-    public int getDPad() { return joystick.getPOV(); }
+    public int getDPad() { 
+    		return joystick.getPOV();
+    	}
 }

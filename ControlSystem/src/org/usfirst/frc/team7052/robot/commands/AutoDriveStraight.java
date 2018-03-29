@@ -9,18 +9,18 @@ import edu.wpi.first.wpilibj.command.Command;
 /**
  *
  */
-public class CoolAuton extends CommandBase {
+public class AutoDriveStraight extends CommandBase {
 
 	private double startTime, currentTime, duration;
 	private boolean timeToggle;
 	
-    public CoolAuton() {
+    public AutoDriveStraight() {
        requires(driveTrain);
     }
 
     // Called just before this Command runs the first time
     protected void initialize() {
-    	timeToggle = true;
+    		timeToggle = true;
     }
 
     // Called repeatedly when this Command is scheduled to run

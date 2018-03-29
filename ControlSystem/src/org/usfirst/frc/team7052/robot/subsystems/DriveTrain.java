@@ -3,7 +3,11 @@ package org.usfirst.frc.team7052.robot.subsystems;
 import org.usfirst.frc.team7052.robot.Constants;
 import org.usfirst.frc.team7052.robot.DrivingState;
 import org.usfirst.frc.team7052.robot.OI;
+import org.usfirst.frc.team7052.robot.OIMap;
 
+import com.kauailabs.navx.frc.AHRS;
+
+import edu.wpi.first.wpilibj.I2C;
 import edu.wpi.first.wpilibj.Spark;
 import edu.wpi.first.wpilibj.SpeedControllerGroup;
 import edu.wpi.first.wpilibj.command.PIDSubsystem;
@@ -14,15 +18,15 @@ public class DriveTrain extends PIDSubsystem {
     public SpeedControllerGroup leftGroup;
     public SpeedControllerGroup rightGroup;
 
-   // public static AHRS ahrs;
+    public AHRS ahrs;
 
     public static boolean isMovingStraight = false;
     public static double beginMovementAngle = 0;
 
     public static double leftSpeed = 0.0;
     public static double rightSpeed = 0.0;
-    public static double leftSpeedMotorErrorMultiplier = 1.0;
-    public static double rightSpeedMotorErrorMultiplier = 1.0;
+    
+    public static double pidError = 0.0;
 
     private OI oi;
 
@@ -34,19 +38,16 @@ public class DriveTrain extends PIDSubsystem {
         leftGroup.setInverted(true);
         rightGroup.setInverted(true);
         drive = new DifferentialDrive(leftGroup, rightGroup);
-        /*try {
+        try {
             ahrs = new AHRS(I2C.Port.kOnboard);
         }
         catch(RuntimeException exc) {
             exc.printStackTrace();
         }
-*/
+
         this.setAbsoluteTolerance(1.0);
 
         this.enable();
-
-     //   ahrs.reset();
-
     }
 
     @Override
@@ -65,8 +66,8 @@ public class DriveTrain extends PIDSubsystem {
     }
 
     public static void tankDrive(OI oi, DrivingState drivingState) {
-        double xAxis = oi.getAxis(Constants.kAxisRightStickX);
-        double yAxis = oi.getAxis(Constants.kAxisLeftStickY);
+        double xAxis = oi.getAxis(OIMap.rightAxisX);
+        double yAxis = oi.getAxis(OIMap.leftAxisY);
 
         double speed = yAxis;
 
@@ -86,10 +87,8 @@ public class DriveTrain extends PIDSubsystem {
             leftSpeed = -turnValue;
             rightSpeed = turnValue;
         }
-        leftSpeedMotorErrorMultiplier = 1.0;
-        rightSpeedMotorErrorMultiplier = 1.0;
-        leftSpeed = getNormalizedSpeed(leftSpeed, drivingState) * leftSpeedMotorErrorMultiplier;
-        rightSpeed = getNormalizedSpeed(rightSpeed, drivingState) * rightSpeedMotorErrorMultiplier;
+        leftSpeed = getNormalizedSpeed(leftSpeed, drivingState) * pidError;
+        rightSpeed = getNormalizedSpeed(rightSpeed, drivingState) * pidError;
 
         //slowest speed = kSlowestRobotSpeed
         //normalize speed so that it is always between kSlowestRobotSpeed and 1, -Constants.kSlowestRobotSpeed and -1, or 0
@@ -120,8 +119,8 @@ public class DriveTrain extends PIDSubsystem {
     @Override
     protected double returnPIDInput() {
         //get joystick input angle
-        /*double xAxis = oi.getAxis(Constants.kAxisRightStickX);
-        double yAxis = oi.getAxis(Constants.kAxisLeftStickY);
+        double xAxis = oi.getAxis(OIMap.rightAxisX);
+        double yAxis = oi.getAxis(OIMap.leftAxisY);
 
         if (!isMovingStraight && Math.abs(yAxis) > 0.1 && Math.abs(xAxis) < 0.1) {
             isMovingStraight = true;
@@ -129,42 +128,28 @@ public class DriveTrain extends PIDSubsystem {
             beginMovementAngle = ahrs.getAngle();
         }
 
-        if (Math.abs(yAxis) > 0.1 && Math.abs(xAxis) < 0.1) {
-        }
+        if (Math.abs(yAxis) > 0.1 && Math.abs(xAxis) < 0.1) { } // do nothing
         else {
             isMovingStraight = false;
-            leftSpeedMotorErrorMultiplier = 1.0;
-            rightSpeedMotorErrorMultiplier = 1.0;
+            pidError = 0;
         }
 
-        return ahrs.getAngle();*/
-    		return 0.0;
+        return ahrs.getAngle();
     }
 
 
     @Override
     protected void usePIDOutput(double output) {
-        /*System.out.println(output);
         if (isMovingStraight) {
-            if (output > 0) {
-                rightSpeedMotorErrorMultiplier = 1.0;
-                leftSpeedMotorErrorMultiplier += output;
-            }
-            else if (output < 0) {
-                rightSpeedMotorErrorMultiplier += -output;
-                leftSpeedMotorErrorMultiplier = 1.0;
-            }
-            else {
-                leftSpeedMotorErrorMultiplier = 1.0;
-                rightSpeedMotorErrorMultiplier = 1.0;
-            }
-            System.out.println(output + " "  + leftSpeedMotorErrorMultiplier + " " + rightSpeedMotorErrorMultiplier);
-        }*/
+            pidError = output;
+        }
+        else {
+        		pidError = 0;
+        }
     }
 
-    public void AutonDriveStraight() {
-        leftGroup.set(0.7 * leftSpeedMotorErrorMultiplier);
-        rightGroup.set(0.7 * rightSpeedMotorErrorMultiplier);
-
+    public void driveStraight() {
+        leftGroup.set(0.6 + pidError);
+        rightGroup.set(0.6 - pidError);
     }
 }

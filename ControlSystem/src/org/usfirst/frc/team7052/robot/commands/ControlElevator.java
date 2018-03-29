@@ -15,7 +15,7 @@ public class ControlElevator extends CommandBase {
 
     @Override
     protected void initialize() {
-        elevatorLift.startTime();
+    	
     }
 
     @Override
