@@ -1,2 +1,2 @@
-# SIHRobotics2018
-Team 7052 - SIHRobotics' code for the 2018 FIRST Power Up Competition.
+# FRC2018
+Team 7052's 2018 codebase for the FIRST Power Up Competition
