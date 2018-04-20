@@ -5,12 +5,12 @@ import org.usfirst.frc.team7052.robot.OI;
 import edu.wpi.first.wpilibj.command.CommandGroup;
 
 public class ControlElevator extends CommandBase {
-    private OI oi;
-    CommandGroup commandGroup;
+    public OI oi;
+    //CommandGroup commandGroup;
     public ControlElevator(OI oi) {
         this.oi = oi;
         requires(elevatorLift);
-        commandGroup = new CommandGroup();
+        //.commandGroup = new CommandGroup();
     }
 
     @Override

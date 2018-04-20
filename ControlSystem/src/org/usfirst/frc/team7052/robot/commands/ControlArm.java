@@ -2,13 +2,22 @@ package org.usfirst.frc.team7052.robot.commands;
 
 import org.usfirst.frc.team7052.robot.Constants;
 import org.usfirst.frc.team7052.robot.OI;
+import org.usfirst.frc.team7052.robot.OIMap;
+
+import edu.wpi.first.wpilibj.Spark;
 
 public class ControlArm extends CommandBase {
+	
+	Spark verticalLiftMotor;
+	Spark wheelsLeftMotor;
+	Spark wheelsRightMotor;
+	Spark rotatingLeftMotor;
+	Spark rotatingRightMotor;
 
-    private OI oi;
+    public OI oi;
     public ControlArm(OI oi) {
         this.oi = oi;
-        requires(claw);
+        requires(arm);
     }
 
     @Override
@@ -17,27 +26,25 @@ public class ControlArm extends CommandBase {
 
     @Override
     protected void execute() {
-    	System.out.println(oi.buttonPressed(Constants.kButtonA));
-        if (oi.buttonPressed(Constants.kButtonA)) {
-        	claw.liftArm();
-        }
-        else if (oi.buttonPressed(Constants.kButtonB)) {
-        	claw.lowerArm();
-        }
-        else {
-        	claw.hoverArm();
-        }
-        
-        if (oi.buttonPressed(Constants.kButtonX)) {
-        	System.out.println("AAA");
-        	claw.openFloatingArm();
-        }
-        else if (oi.buttonPressed(Constants.kButtonY)) {
-        	claw.closeFloatingArm();
-        }
-        else {
-        	claw.stopFloatingArm();
-        }
+    	arm.spinWheels(oi);
+    	if (oi.getInput(OIMap.buttonX) == 1) {
+    		arm.openRotatingArms();
+    	}
+    	else if (oi.getInput(OIMap.buttonA) == 1) {
+    		arm.squeezeCube();
+    	}
+    	else {
+    		arm.closeRotatingArms();
+    	}
+    	
+    	double rightAxisY = oi.getInput(OIMap.rightAxisY);
+    	if (rightAxisY > 0.3) {
+    		arm.liftArm();
+    	}
+    	else if (rightAxisY < -0.3) {
+    		arm.lowerArm();
+    	}
+    	else arm.hoverArm();
     }
 
     @Override

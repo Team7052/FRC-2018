@@ -2,11 +2,8 @@ package org.usfirst.frc.team7052.robot.commands;
 
 import edu.wpi.first.wpilibj.command.Command;
 
-import java.util.*;
-
 import org.usfirst.frc.team7052.robot.Constants;
-import org.usfirst.frc.team7052.robot.OI;
-import org.usfirst.frc.team7052.robot.subsystems.Claw;
+import org.usfirst.frc.team7052.robot.subsystems.Arm;
 import org.usfirst.frc.team7052.robot.subsystems.DriveTrain;
 import org.usfirst.frc.team7052.robot.subsystems.ElevatorLift;
 
@@ -15,7 +12,7 @@ public class CommandBase extends Command {
 
 	public static DriveTrain driveTrain;
     public static ElevatorLift elevatorLift;
-    public static Claw claw;
+    public static Arm arm;
 
     public static void init() {
         driveTrain = DriveTrain.getInstance();
@@ -23,7 +20,7 @@ public class CommandBase extends Command {
             driveTrain.setOI(Constants.ois.get(0));
         }
         elevatorLift = ElevatorLift.getInstance();
-        claw = Claw.getInstance();
+        arm = Arm.getInstance();
     }
 
     @Override

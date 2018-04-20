@@ -1,7 +1,8 @@
-package org.usfirst.frc.team7052.robot.commands;
+package org.usfirst.frc.team7052.robot.commands.auto;
 
 import java.awt.Robot;
 
+import org.usfirst.frc.team7052.robot.commands.CommandBase;
 import org.usfirst.frc.team7052.robot.subsystems.DriveTrain;
 
 import edu.wpi.first.wpilibj.command.Command;
@@ -9,12 +10,12 @@ import edu.wpi.first.wpilibj.command.Command;
 /**
  *
  */
-public class AutoDriveStraight extends CommandBase {
+public class BasicAuton extends CommandBase {
 
 	private double startTime, currentTime, duration;
 	private boolean timeToggle;
 	
-    public AutoDriveStraight() {
+    public BasicAuton() {
        requires(driveTrain);
     }
 

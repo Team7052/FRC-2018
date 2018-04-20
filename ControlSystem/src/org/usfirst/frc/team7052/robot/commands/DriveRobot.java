@@ -5,7 +5,7 @@ import org.usfirst.frc.team7052.robot.OI;
 import org.usfirst.frc.team7052.robot.OIMap;
 
 public class DriveRobot extends CommandBase {
-    OI oi;
+    public OI oi;
 
     DrivingState drivingState = DrivingState.regular;
     public DriveRobot(OI oi) {
@@ -19,10 +19,10 @@ public class DriveRobot extends CommandBase {
 
     @Override
     protected void execute() {
-        if (Math.abs(oi.getAxis(OIMap.leftBumper)) > 0.01) {
+        if (Math.abs(oi.getInput(OIMap.leftBumper)) > 0.01) {
             drivingState = DrivingState.careful;
         }
-        else if (Math.abs(oi.getAxis(OIMap.rightBumper)) > 0.01) {
+        else if (Math.abs(oi.getInput(OIMap.rightBumper)) > 0.01) {
             drivingState = DrivingState.turbo;
         }
         else {

@@ -33,45 +33,41 @@ public class OI {
     }
     
     public OI(int joystickPort, JoystickType type) {
-    		joystick = new Joystick(joystickPort);
+    	joystick = new Joystick(joystickPort);
         this.type = type;
         
         switch (type) {
 	        case xbox:
-	        		xbox = new Xbox();
-	        		break;
+        		xbox = new Xbox();
+        		break;
 	        case logitech:
-	        		logitech = new Logitech();
-	        		break;
+        		logitech = new Logitech();
+        		break;
 	        case ps4:
-	        		ps4 = new PS4();
-	        		break;
+        		ps4 = new PS4();
+        		break;
         }
     }
 
-    public double getAxis(OIMap map) {
-    		switch (type) {
-    			case logitech:
-    				return joystick.getRawAxis(logitech.axis.get(map));
-    			case xbox:
-    				return joystick.getRawAxis(xbox.axis.get(map));
-    			case ps4:
-    				return joystick.getRawAxis(ps4.axis.get(map));
-    		}
-    		return 0;
-    }
-    public boolean buttonPressed(OIMap map) {
-    		switch (type) {
-    		case logitech:
-    			return joystick.getRawButton(logitech.buttons.get(map));
-    		case xbox:
-    			return joystick.getRawButton(xbox.buttons.get(map));
-    		case ps4:
-    			return joystick.getRawButton(ps4.buttons.get(map));
-    		}
-    		return false;
-    }
-    public int getDPad() { 
-    		return joystick.getPOV();
+    public double getInput(OIMap map) {
+    	switch (type) {
+    	case logitech:
+    		if (logitech.axis.containsKey(map)) return joystick.getRawAxis(logitech.axis.get(map));
+    		else if (logitech.buttons.containsKey(map)) return joystick.getRawButton(logitech.buttons.get(map)) ? 1.0 : 0.0;
+    		else return 0.0;
+    	case xbox:
+    		if (xbox.axis.containsKey(map)) return joystick.getRawAxis(xbox.axis.get(map));
+    		else if (xbox.buttons.containsKey(map)) return joystick.getRawButton(xbox.buttons.get(map)) ? 1.0 : 0.0;
+    		else return 0.0;
+    	case ps4:
+    		if (ps4.axis.containsKey(map)) return joystick.getRawAxis(ps4.axis.get(map));
+    		else if (ps4.buttons.containsKey(map)) return joystick.getRawButton(ps4.buttons.get(map)) ? 1.0 : 0.0;
+    		else return 0.0;
     	}
+    	return 0.0;
+    }
+    
+    public int getDPad() { 
+    	return joystick.getPOV();
+    }
 }

@@ -7,12 +7,15 @@
 
 package org.usfirst.frc.team7052.robot;
 
+import edu.wpi.first.wpilibj.DriverStation;
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj.command.Scheduler;
 
 import java.util.*;
 
+import org.usfirst.frc.team7052.robot.OI.JoystickType;
 import org.usfirst.frc.team7052.robot.commands.*;
+import org.usfirst.frc.team7052.robot.commands.auto.BasicAuton;
 
 /**
  * The VM is configured to automatically run this class, and to call the
@@ -24,24 +27,27 @@ import org.usfirst.frc.team7052.robot.commands.*;
 public class Robot extends TimedRobot {
     OI driveOI;
     OI liftOI;
-    AutoDriveStraight autoCommand;
+    BasicAuton autoCommand;
 
     TeleopCommandGroup teleopCommandGroup;
     MainVision mainVision;
 
     Scheduler scheduler;
     List<OI> ois = new ArrayList<>();
+    String gameData;
 
     @Override
     public void robotInit() {
-    		// TODO: use smart dashboard to load joysticks
-    		// fill here
+    	// TODO: use shuffleboard to load joysticks
+    	// fill here
+    	Constants.ois.add(new OI(0, JoystickType.xbox));
+    	Constants.ois.add(new OI(1, JoystickType.logitech));
 		// initialize ois
         CommandBase.init();
-        mainVision = MainVision.getInstance();
-        teleopCommandGroup = new TeleopCommandGroup(driveOI, liftOI); // add teleop command group
+       // mainVision = MainVision.getInstance();
+        teleopCommandGroup = new TeleopCommandGroup(); // add teleop command group
         scheduler = Scheduler.getInstance(); // local variable for static variable scheduler
-        autoCommand = new AutoDriveStraight();
+        autoCommand = new BasicAuton();
     }
 
     @Override
@@ -51,9 +57,33 @@ public class Robot extends TimedRobot {
 
     @Override
     public void autonomousInit() {
-       scheduler.removeAll();
-        //scheduler.add(new CoolAuton());
-       autoCommand.start();
+        // init game data
+    	gameData = DriverStation.getInstance().getGameSpecificMessage();
+    	if (gameData.length() > 0) {
+    		if (gameData.charAt(0) == 'L') {
+    			// autonomous to the left
+    		}
+    		else {
+    			// autonomous to the right
+    		}
+    	}
+    	scheduler.removeAll();
+    	autoCommand.start();
+    }
+    
+    public void resetJoysticks() {
+    	if (Constants.ois.size() > 1) {
+    		teleopCommandGroup.controlArmCommand.oi = Constants.ois.get(1);
+    		teleopCommandGroup.controlElevatorCommand.oi = Constants.ois.get(1);
+    		teleopCommandGroup.driveRobotCommand.oi = Constants.ois.get(0);
+    		CommandBase.driveTrain.setOI(Constants.ois.get(0));
+    	}
+    	else if (Constants.ois.size() > 0){
+    		teleopCommandGroup.controlArmCommand.oi = Constants.ois.get(0);
+    		teleopCommandGroup.controlElevatorCommand.oi = Constants.ois.get(0);
+    		teleopCommandGroup.driveRobotCommand.oi = Constants.ois.get(0);
+    		CommandBase.driveTrain.setOI(Constants.ois.get(0));
+    	}
     }
 
     @Override

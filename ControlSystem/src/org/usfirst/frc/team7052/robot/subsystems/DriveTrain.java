@@ -4,6 +4,7 @@ import org.usfirst.frc.team7052.robot.Constants;
 import org.usfirst.frc.team7052.robot.DrivingState;
 import org.usfirst.frc.team7052.robot.OI;
 import org.usfirst.frc.team7052.robot.OIMap;
+import org.usfirst.frc.team7052.robot.subsystems.ElevatorLift.LiftStage;
 
 import com.kauailabs.navx.frc.AHRS;
 
@@ -21,15 +22,17 @@ public class DriveTrain extends PIDSubsystem {
     public AHRS ahrs;
 
     public static boolean isMovingStraight = false;
-    public static double beginMovementAngle = 0;
 
     public static double leftSpeed = 0.0;
     public static double rightSpeed = 0.0;
     
     public static double pidError = 0.0;
+    
+    private static ElevatorLift elevatorLift;
+    public static boolean rotatingToAngle = false;
 
     private OI oi;
-
+   
     private DriveTrain() {
         //TODO: Tune PID Values
         super("DriveTrain", 0.001, 0.01, 0.05);
@@ -44,7 +47,7 @@ public class DriveTrain extends PIDSubsystem {
         catch(RuntimeException exc) {
             exc.printStackTrace();
         }
-
+        ahrs.reset();
         this.setAbsoluteTolerance(1.0);
 
         this.enable();
@@ -66,8 +69,18 @@ public class DriveTrain extends PIDSubsystem {
     }
 
     public static void tankDrive(OI oi, DrivingState drivingState) {
-        double xAxis = oi.getAxis(OIMap.rightAxisX);
-        double yAxis = oi.getAxis(OIMap.leftAxisY);
+    	rotatingToAngle = false;
+        double xAxis = oi.getInput(OIMap.rightAxisX);
+        double yAxis = oi.getInput(OIMap.leftAxisY);
+        
+        // if the elevator lift is up, then don't allow the lift to go any higher
+        elevatorLift = ElevatorLift.getInstance();
+        if (elevatorLift.liftStage == LiftStage.top) {
+        	drivingState = DrivingState.careful;
+        }
+        else if (elevatorLift.liftStage == LiftStage.bottom) {
+        	if (drivingState == DrivingState.turbo) drivingState = DrivingState.regular; 
+        }
 
         double speed = yAxis;
 
@@ -97,6 +110,8 @@ public class DriveTrain extends PIDSubsystem {
     }
 
     public void stop() {
+        leftGroup.set(0);
+        rightGroup.set(0);
         drive.stopMotor();
     }
 
@@ -115,17 +130,33 @@ public class DriveTrain extends PIDSubsystem {
         else if (-Constants.kSlowestRobotSpeed < speed && speed < 0) speed = -Constants.kSlowestRobotSpeed;
         return speed;
     }
+    
+    public void driveStraight(double speed) {
+    	leftGroup.set(speed + pidError);
+    	rightGroup.set(speed - pidError);
+    	isMovingStraight = true;
+    	this.setSetpoint(ahrs.getAngle());
+    }
+    
+    public boolean rotateToAngle(double degrees) {
+    	this.setSetpoint(degrees);
+    	rotatingToAngle = true;
+
+    	if (Math.abs(ahrs.getAngle() - degrees) < 2) {
+    		return true;
+    	}
+    	return false;
+    }
 
     @Override
     protected double returnPIDInput() {
         //get joystick input angle
-        double xAxis = oi.getAxis(OIMap.rightAxisX);
-        double yAxis = oi.getAxis(OIMap.leftAxisY);
+        double xAxis = oi.getInput(OIMap.rightAxisX);
+        double yAxis = oi.getInput(OIMap.leftAxisY);
 
         if (!isMovingStraight && Math.abs(yAxis) > 0.1 && Math.abs(xAxis) < 0.1) {
             isMovingStraight = true;
             setSetpoint(ahrs.getAngle());
-            beginMovementAngle = ahrs.getAngle();
         }
 
         if (Math.abs(yAxis) > 0.1 && Math.abs(xAxis) < 0.1) { } // do nothing
@@ -140,16 +171,11 @@ public class DriveTrain extends PIDSubsystem {
 
     @Override
     protected void usePIDOutput(double output) {
-        if (isMovingStraight) {
+        if (isMovingStraight || rotatingToAngle) {
             pidError = output;
         }
         else {
-        		pidError = 0;
+        	pidError = 0;
         }
-    }
-
-    public void driveStraight() {
-        leftGroup.set(0.6 + pidError);
-        rightGroup.set(0.6 - pidError);
     }
 }
